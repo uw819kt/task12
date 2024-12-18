@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params) #登録フォームの入力値
     if @user.save #詳細画面に遷移→show action
       log_in(@user)
+      flash[:notice] = 'アカウントを登録しました'
       redirect_to user_path(@user.id)
     else #再度登録画面表示
       render :new #エラーメッセージはnew.html.erb
@@ -29,7 +30,8 @@ class UsersController < ApplicationController
   def update
     user = User.find(params[:id])
     user.update!(user.params)
-    redirect_to user_url, notice: "投稿内容を更新しました。"
+    flash[:notice] = 'アカウントを更新しました'
+    redirect_to user_url
   end
 
   private

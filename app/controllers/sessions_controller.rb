@@ -11,9 +11,10 @@ class SessionsController < ApplicationController
     #セッションオブジェクトにユーザID登録、ユーザの詳細画面に遷移
     if user && user.authenticate(params[:session][:password])
       log_in(user)
+      flash[:notice] = 'ログインしました'
       redirect_to user_path(user.id)
     else #newアクション呼び出し、メッセージ表示
-      flash.now[:danger] = 'ログインに失敗しました'
+      flash.now[:danger] = 'メールアドレスまたはパスワードに誤りがあります'
       render :new
     end
   end
