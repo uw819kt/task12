@@ -10,16 +10,18 @@
   </head>
 
   <body>
-    <p id="notice"><%= notice %></p>
-    
     <% flash.each do |key, value| %>
       <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>
-    <% if logged_in? %> 
-      <%= link_to "Profile", user_path(current_user.id) %>
-      <%= link_to "Logout", session_path(current_user.id), method: :delete %>
+    <% if logged_in? %>
+      <ul> 
+        <li><%= link_to "タスク一覧", tasks_path %></li>
+        <li><%= link_to "タスクを登録する", tasks_path(current_user.id) %></li>
+        <li><%= link_to "アカウント", user_path(current_user.id) %></li>
+        <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
+      </ul>
     <% else %>
-      <ul>
+      <ul> 
         <li><%= link_to "アカウント登録", new_user_path %></li>
         <li><%= link_to "ログイン", new_session_path %></li>
       </ul>

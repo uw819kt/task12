@@ -1,10 +1,12 @@
 class ApplicationController < ActionController::Base
-  include SessionsHelper
-  before_action :login_required
+  include SessionsHelper #全てのコントローラで使用できるように
+  before_action :login_required 
+  #アクション実行前にlogin_requiredが呼ばれる
   
   private
 
-  def login_required
+  def login_required #ログインしないとアクセス不可
     redirect_to new_session_path unless current_user
+    #current_user=nillでログイン画面に遷移
   end
 end

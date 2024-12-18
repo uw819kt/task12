@@ -1,4 +1,4 @@
-<h1>アカウント登録ページ</h1>
+<h1>アカウント編集ページ</h1>
 <% if @user.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> from being saved:</h2>
@@ -19,5 +19,8 @@
   <%= f.password_field :password %>
   <%= f.label :"パスワード（確認）" %>
   <%= f.password_field :password_confirmation %>
-  <%= f.submit "登録する" %>
+  <%= f.submit "更新する" %>
 <% end %>
+
+<%= link_to t('common.back'), users_path %>
+
