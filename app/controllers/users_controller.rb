@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     if @user.save #詳細画面に遷移→show action
       log_in(@user)
       flash[:notice] = 'アカウントを登録しました'
-      redirect_to user_path(@user.id)
+      redirect_to tasks_path(@user.id)
     else #再度登録画面表示
       render :new #エラーメッセージはnew.html.erb
     end
@@ -28,10 +28,20 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = User.find(params[:id])
-    user.update!(user.params)
-    flash[:notice] = 'アカウントを更新しました'
-    redirect_to user_url
+    @user = User.find(params[:id]) #データ取得
+    if @user.update(user_params)
+      flash[:notice] = 'アカウントを更新しました'
+      redirect_to user_path(@user) #ユーザの詳細ページ(show)へ
+    else
+      redirect_to edit_user_path(@user) 
+      #edit～はidを引数として取る、編集画面にリダイレクト
+    end
+  end
+
+  def destroy
+    @user.destroy
+    flash[:notice] = 'タスクを削除しました'
+    redirect_to users_path
   end
 
   private

@@ -7,5 +7,5 @@ class User < ApplicationRecord
              too_short: "パスワードは6文字以上で入力してください",            
             }
 
-
+  has_many :tasks
 end
