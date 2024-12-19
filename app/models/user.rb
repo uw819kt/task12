@@ -13,10 +13,4 @@ class User < ApplicationRecord
              too_short: "は6文字以上で入力してください",            
             }
 
-  
-  def password_confirmation
-    if password != password_confirmation
-      errors.add(:password_confirmation, 'とパスワードの入力が一致しません')
-    end
-  end
 end
