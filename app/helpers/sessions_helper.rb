@@ -1,6 +1,6 @@
 module SessionsHelper
 
-  def current_user #ログイン情報保持、現在ログイン中のユーザ代入
+  def current_user #ログイン情報保持、取得、現在ログイン中のユーザ代入
     @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
   end
 
