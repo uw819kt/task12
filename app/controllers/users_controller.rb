@@ -33,8 +33,9 @@ class UsersController < ApplicationController
       flash[:notice] = 'アカウントを更新しました'
       redirect_to user_path(@user) #ユーザの詳細ページ(show)へ
     else
-      redirect_to edit_user_path(@user) 
-      #edit～はidを引数として取る、編集画面にリダイレクト
+      flash[:error] = 'アカウントを更新できませんでした'
+      render :edit
+      #失敗の処理はrenderでないとバリデーション×、編集画面出力、
     end
   end
 
