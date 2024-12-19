@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'sessions#new'
   resources :tasks
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :sessions
   resources :users
 end
 

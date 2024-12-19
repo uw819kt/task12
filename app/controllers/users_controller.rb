@@ -39,9 +39,10 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user = User.find(params[:id])
     @user.destroy
-    flash[:notice] = 'タスクを削除しました'
-    redirect_to users_path
+    redirect_to new_session_path
+    #ビューファイルのリンクはルーティングヘルパーを使う、手動×
   end
 
   private
