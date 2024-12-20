@@ -44,7 +44,7 @@ class TasksController < ApplicationController
 
     def set_task
       @task = Task.find(params[:id])
-      #current_user.tasks.find
+      #current_user.tasks.find→URLを絞り込む
     end
 
     def task_params

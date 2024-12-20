@@ -25,6 +25,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
+    #edit.htmlと依存関係が発生、htmlファイルはローカル変数が望ましい
   end
 
   def update
