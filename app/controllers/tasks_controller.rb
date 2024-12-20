@@ -44,6 +44,7 @@ class TasksController < ApplicationController
 
     def set_task
       @task = Task.find(params[:id])
+      #current_user.tasks.find
     end
 
     def task_params
