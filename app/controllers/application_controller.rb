@@ -6,9 +6,9 @@ class ApplicationController < ActionController::Base
   private
 
   def login_required #ログインしないとアクセス不可
-    redirect_to new_session_path unless current_user
-    if current_user = nil
-     flash[:notice] = "ログインしてください"
+    unless current_user
+      flash[:notice] = "ログインしてください"
+      redirect_to new_session_path
     #current_user=nillでログイン画面に遷移
     end
   end

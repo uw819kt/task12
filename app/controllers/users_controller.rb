@@ -24,10 +24,11 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = current_user
   end
 
   def update
-    @user = User.find(params[:id]) #データ取得
+    @user = current_user #データ取得
     if @user.update(user_params)
       flash[:notice] = 'アカウントを更新しました'
       redirect_to user_path(@user) #ユーザの詳細ページ(show)へ
