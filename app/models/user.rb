@@ -12,6 +12,7 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6,
              too_short: "は6文字以上で入力してください",            
             }
+  validates :password, presence: true
   validates :password, confirmation: {message: "とパスワードが一致しません"}
 
 end
